@@ -1,0 +1,8 @@
+FROM node:23
+WORKDIR /client_expressjs/
+COPY ./shared ./shared
+COPY ./client_receptionist ./client_receptionist
+RUN npm install --prefix ./shared
+RUN npm install --prefix ./client_receptionist
+EXPOSE 3003
+CMD ["npm", "start","--prefix", "/client_expressjs/client_receptionist/"]

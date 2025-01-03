@@ -1,0 +1,90 @@
+{{> spinner}}
+
+{{> sidebar}}
+
+<!-- Content Start -->
+<div class="content">
+    {{> navbar}}
+
+    <!-- Sales Chart Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-12 col-md-4 col-xl-4">
+                <div class="card text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Monthly Report</h6>
+                    </div>
+                    <canvas id="pie-chart"></canvas>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-8 col-xl-8">
+                <div class="card text-center rounded p-4">
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">Month</span>
+                        <input type="text" class="input-sm form-control d-flex text-center" value="{{month}}-{{year}}" disabled/>
+                        <span class="input-group-text">Total inconming</span>
+                        <input type="text" class="input-sm form-control d-flex text-center" value="{{report.Total}}" disabled/>
+                    </div>
+                    {{#if user.Areas}}
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">Areas</span>
+                        {{#each user.Areas}}
+                        <input type="text" class="input-sm form-control d-flex text-center" value="{{this.Name}}" disabled/>
+                        {{/each}}
+                    </div>
+                    {{/if}}
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">Category Name</th>
+                                    <th scope="col">Income</th>
+                                    <th scope="col">Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each report.Details}}
+                                <tr>
+                                    <td>{{this.CategoryName}}</td>
+                                    <td>{{this.Income}}</td>
+                                    <td>{{this.Percent}}</td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sales Chart End -->
+
+    {{> footer}}
+</div>
+<!-- Content End -->
+
+{{> backToTop}}
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="/lib/chart/chart.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Pie Chart
+    var ctx5 = $("#pie-chart").get(0).getContext("2d");
+    var myChart5 = new Chart(ctx5, {
+        type: "pie",
+        data: {
+
+            labels: {{{label}}},
+            datasets: [{
+                backgroundColor: {{{backgroundColor}}},
+                data: {{{data}}}
+            }]
+
+        },
+        options: {
+            responsive: true
+        }
+    });
+});
+</script>

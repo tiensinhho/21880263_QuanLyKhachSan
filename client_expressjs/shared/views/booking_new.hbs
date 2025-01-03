@@ -1,0 +1,68 @@
+{{> spinner}}
+
+{{> sidebar}}
+
+<!-- Content Start -->
+<div class="content">
+    {{> navbar}}
+
+    <!-- Recent Sales Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-12 col-md-8 col-xl-8 m-auto">
+                <form class="card rounded p-4" method="post" action="">
+                    {{> booking_form}}
+                    {{#if booking}}
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" name="_method" value="Post" class="btn btn-danger px-3 m-auto">Confirm Booking</button>
+                    </div>
+                    {{/if}}
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Recent Sales End -->
+    {{> footer}}
+</div>
+<!-- Content End -->
+
+{{> backToTop}}
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Lấy các phần tử input
+        const priceInput = $('#price');
+        const checkinInput = $('#check_in');
+        const checkoutInput = $('#check_out');
+        const totalInput = $('#total');
+
+        // Hàm tính toán và cập nhật giá trị #total
+        function updateTotal() {
+            const price = parseFloat(priceInput.val());
+            const checkin = new Date(checkinInput.val());
+            const checkout = new Date(checkoutInput.val());
+
+            // Kiểm tra xem ngày tháng có hợp lệ không
+            if (checkin instanceof Date && !isNaN(checkin) &&
+                checkout instanceof Date && !isNaN(checkout) &&
+                checkout >= checkin) {
+
+                // Tính toán số ngày
+                const diffTime = Math.abs(checkout - checkin);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                // Cập nhật giá trị #total
+                const total = price * diffDays;
+                totalInput.val(total);
+            } else {
+                // Xử lý trường hợp ngày tháng không hợp lệ (ví dụ: hiển thị thông báo lỗi)
+                totalInput.val("Invalid date");
+            }
+        }
+
+        // Gắn sự kiện 'change' cho #checkin và #checkout
+        checkinInput.on('change', updateTotal);
+        checkoutInput.on('change', updateTotal);
+    });
+</script>

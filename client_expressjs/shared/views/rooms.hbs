@@ -1,0 +1,82 @@
+{{> spinner}}
+
+{{> sidebar}}
+
+<!-- Content Start -->
+<div class="content">
+    {{> navbar}}
+    <!-- Recent Sales Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            {{#each rooms}}
+            <div class="col-sm-12 col-md-4 col-xl-4">
+                <form class="card rounded" action="booking/new">
+                    <h3 class="card-header fw-bold text-center text-primary">
+                        {{this.RoomNumber}}
+                        <input type="hidden" name="room_id" value="{{this.Id}}">
+                    </h3>
+                    <img src="{{this.ImageURL}}" class="card-img-top p-2 cover" alt="...">
+                    <div class="input-group px-2">
+                        <span class="input-group-text" id="basic-addon1">Category</span>
+                        <input type="text" class="form-control" aria-label="Username" value="{{this.CategoryName}}" disabled>
+                    </div>
+                    <div class="input-group px-2">
+                        <span class="input-group-text" id="basic-addon1">Price</span>
+                        <input type="text" class="form-control w-25" aria-label="Username"
+                            aria-describedby="basic-addon1" value="{{this.PricePerNight}}" disabled>
+                    </div>
+                    <div class="input-group px-2">
+                        <span class="input-group-text" id="basic-addon1">Guests</span>
+                        <input type="text" class="form-control" value="{{this.NumberOfGuests}}" disabled>
+                    </div>
+                    <div class="input-group px-2 mb-3">
+                        <span class="input-group-text" id="basic-addon1">Satus</span>
+                        <input type="text" class="form-control" value="{{this.Status}}" disabled>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        {{#if_eq Status "Unavailable"}}
+                        <p class="btn btn-danger w-100"></p>
+                        {{else}}
+                        <input type="submit" value="Book" class="btn btn-primary w-100">
+                        {{/if_eq}}
+                    </div>
+                </form>
+            </div>
+            {{/each}}
+        </div>
+        <div class="container-fluid pt-3 d-flex align-items-center justify-content-center m-auto">
+            <ul class="pagination pagination-centered">
+                <ul class="pagination pagination-centered">
+                    {{#paginate pagination type="first"}}
+                    <li class="{{#if disabled}}disabled {{/if}}page-item"><a class="page-link" href="?p={{n}}">First</a>
+                    </li>
+                    {{/paginate}}
+                    {{#paginate pagination type="previous"}}
+                    <li class="{{#if disabled}}disabled {{/if}}page-item"><a class="page-link" href="?p={{n}}">Prev</a>
+                    </li>
+                    {{/paginate}}
+                    {{#paginate pagination type="middle" limit="7"}}
+                    <li class="{{#if active}}active{{/if}} page-item"><a class="page-link" href="?p={{n}}">{{n}}</a>
+                    </li>
+                    {{/paginate}}
+                    {{#paginate pagination type="next"}}
+                    <li class="{{#if disabled}}disabled{{/if}} page-item"><a class="page-link" href="?p={{n}}">Next</a>
+                    </li>
+                    {{/paginate}}
+                    {{#paginate pagination type="last"}}
+                    <li class="{{#if disabled}}disabled{{/if}} page-item"><a class="page-link" href="?p={{n}}">Last</a>
+                    </li>
+                    {{/paginate}}
+                </ul>
+            </ul>
+
+        </div>
+        <!-- Recent Sales End -->
+        {{> footer}}
+    </div>
+</div>
+<!-- Content End -->
+
+{{> backToTop}}
+
+<script src="/javascripts/pargination.js"></script>

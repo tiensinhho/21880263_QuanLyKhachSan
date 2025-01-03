@@ -1,0 +1,54 @@
+.
+├── client_expressjs
+│   ├── client_auth
+│   │   ├── bin
+│   │   ├── controllers
+│   │   └── routes
+│   ├── client_executive
+│   │   ├── bin
+│   │   ├── controllers
+│   │   └── routes
+│   ├── client_manager
+│   │   ├── bin
+│   │   ├── controllers
+│   │   └── routes
+│   ├── client_receptionist
+│   │   ├── bin
+│   │   ├── controllers
+│   │   └── routes
+│   └── shared
+│       ├── models
+│       ├── public
+│       │   ├── images
+│       │   ├── javascripts
+│       │   ├── lib
+│       │   │   ├── chart
+│       │   │   ├── easing
+│       │   │   ├── owlcarousel
+│       │   │   │   └── assets
+│       │   │   ├── tempusdominus
+│       │   │   │   ├── css
+│       │   │   │   └── js
+│       │   │   └── waypoints
+│       │   ├── scss
+│       │   │   └── bootstrap
+│       │   │       └── scss
+│       │   │           ├── forms
+│       │   │           ├── helpers
+│       │   │           ├── mixins
+│       │   │           ├── utilities
+│       │   │           └── vendor
+│       │   └── stylesheets
+│       ├── services
+│       ├── utils
+│       └── views
+│           └── partials
+└── server_flask
+    ├── controllers
+    ├── models
+    ├── public
+    │   ├── css
+    │   └── images
+    └── services
+
+52 directories

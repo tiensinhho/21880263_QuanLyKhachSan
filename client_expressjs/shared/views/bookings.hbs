@@ -1,0 +1,75 @@
+{{> spinner}}
+
+{{> sidebar}}
+
+<!-- Content Start -->
+<div class="content">
+    {{> navbar}}
+
+    <!-- Recent Sales Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="">
+                <div class="card rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h2>Bookings</h2>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">Date</th>
+                                    <th scope="col">RoomNumber</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Customer</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each bookings}}
+                                <tr>
+                                    <td>{{this.Check_In}}-{{this.Check_Out}}</td>
+                                    <td>{{this.RoomNumber}}</td>
+                                    <td>{{this.Category}}</td>
+                                    <td>{{this.Fullname}}</td>
+                                    <td>{{this.Total}}</td>
+                                    <td>{{this.Status}}</td>
+                                    <td><a class="btn btn-sm btn-primary" href="/booking/{{this.id}}">Detail</a></td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                        <div class="container-fluid pt-3 d-flex align-items-center justify-content-center m-auto">
+                            <ul class="pagination pagination-centered">
+                                {{#paginate pagination type="first"}}
+                                <li class="{{#if disabled}}disabled {{/if}}page-item" ><a class="page-link" href="?p={{n}}">First</a></li>
+                                {{/paginate}}
+                                {{#paginate pagination type="previous"}}
+                                <li class="{{#if disabled}}disabled {{/if}}page-item" ><a class="page-link" href="?p={{n}}">Prev</a></li>
+                                {{/paginate}}
+                                {{#paginate pagination type="middle" limit="7"}}
+                                <li class="{{#if active}}active{{/if}} page-item" ><a class="page-link" href="?p={{n}}">{{n}}</a></li>
+                                {{/paginate}}
+                                {{#paginate pagination type="next"}}
+                                <li class="{{#if disabled}}disabled{{/if}} page-item" ><a class="page-link" href="?p={{n}}">Next</a></li>
+                                {{/paginate}}
+                                {{#paginate pagination type="last"}}
+                                <li class="{{#if disabled}}disabled{{/if}} page-item"><a class="page-link" href="?p={{n}}">Last</a></li>
+                                {{/paginate}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Recent Sales End -->
+    {{> footer}}
+</div>
+<!-- Content End -->
+
+{{> backToTop}}
+
+<script src="/javascripts/pargination.js"></script>

@@ -1,0 +1,47 @@
+<!-- Sidebar Start -->
+<div class="sidebar bg-body-tertiary pe-4 pb-3">
+    <div class="navbar navbar-light">
+        <a href="/" class="navbar-brand mx-4 mb-3">
+            <h3 class="text-primary"><i class="fa fa-hotel me-2"></i>HOTEL ADMIN</h3>
+        </a>
+        <div class="nav-item dropdown w-100">
+            <a href="#" class="nav-link dropdown-toggle d-flex align-items-center ms-3 mb-3" href="#" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="position-relative">
+                    <img class="rounded-circle" src="{{@user.ImageURL}}" alt="" style="width: 40px; height: 40px;">
+                    <div
+                        class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                    </div>
+                </div>
+                <div class="ms-3">
+                    <h6 class="mb-0"><b>{{@user.Fullname}}</b></h6>
+                    <span>{{@user.Role}} </span>
+                </div>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="/account">My profile</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" onclick="toggleTheme()">Change theme</a></li>
+                <li><a class="dropdown-item" href="#" onclick="auto_theme()">Auto theme</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+            </ul>
+        </div>
+        <ul class="navbar-nav w-100">
+            {{#if user.isReceptionist}}
+            {{> sidebar_receptionist}}
+            {{/if}}
+            {{#if user.isManager}}
+            {{> sidebar_manager}}
+            {{/if}}
+            {{#if user.isExecutive}}
+            {{> sidebar_executive}}
+            {{/if}}
+        </ul>
+    </div>
+</div>
+<!-- Sidebar End -->

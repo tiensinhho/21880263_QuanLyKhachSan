@@ -1,0 +1,51 @@
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top text-start rounded rounded-2">
+    <a href="index.html" class="navbar-brand mx-2 d-lg-none">
+        <h2 class="text-primary mb-0"><i class="fa fa-hotel me-2"> HOTEL ADMIN</i></h2>
+    </a>
+    <div class="sidebar-toggler bg-transparent mx-2 p-0">
+        <a class=" border-0 ms-2" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars toggler-icon"></i>
+            <i class="fa fa-times toggler-icon d-none"></i>
+        </a>
+    </div>
+    <form class="navbar-nav d-none d-lg-flex flex-lg-row flex-sm-column w-100 justify-content-end align-items-center" method="get" action="">
+        {{#if is_rooms}}
+        {{> navbar_rooms}}
+        {{/if}}
+        {{#if is_bookings}}
+        {{> navbar_bookings}}
+        {{/if}}
+        {{#if is_annual_report}}
+        {{> navbar_annual_report}}
+        {{/if}}
+        {{#if is_monthly_report}}
+        {{> navbar_monthly_report}}
+        {{/if}}
+        {{#if is_category}}
+        {{> navbar_category}}
+        {{/if}}
+    </form>
+</nav>
+<!-- Navbar End -->
+
+<div class="container-fluid pt-4 px-4 d-md-flex d-sm-flex d-lg-none">
+        <form class="d-md-flex d-sm-flex d-lg-none " method="get" action="">
+        {{#if is_rooms}}
+        {{> navbar_rooms}}
+        {{/if}}
+        {{#if is_bookings}}
+        {{> navbar_bookings}}
+        {{/if}}
+        {{#if is_annual_report}}
+        {{> navbar_annual_report}}
+        {{/if}}
+        {{#if is_monthly_report}}
+        {{> navbar_monthly_report}}
+        {{/if}}
+        {{#if is_category}}
+        {{> navbar_category}}
+        {{/if}}
+        </form>
+</div>

@@ -1,0 +1,126 @@
+services:
+  client_auth:
+    build:
+      context: ./client_expressjs/
+      dockerfile: Dockerfile.auth
+    environment:
+      - SERVER_URL=http://server_flask
+      - AUTH_PORT=${AUTH_PORT}
+      - DATA_PORT=${DATA_PORT}
+      - EXECUTIVE_PORT=${EXECUTIVE_PORT}
+      - MANAGER_PORT=${MANAGER_PORT}
+      - RECEPTIONIST_PORT=${RECEPTIONIST_PORT}
+      - IMAGE_PORT=${IMAGE_PORT}
+    ports:
+      - "${AUTH_PORT}:${AUTH_PORT}"
+    networks:
+      - mynetwork
+
+  client_executive:
+    build:
+      context: ./client_expressjs/
+      dockerfile: Dockerfile.executive
+    environment:
+      - SERVER_URL=http://server_flask
+      - AUTH_PORT=${AUTH_PORT}
+      - DATA_PORT=${DATA_PORT}
+      - EXECUTIVE_PORT=${EXECUTIVE_PORT}
+      - MANAGER_PORT=${MANAGER_PORT}
+      - RECEPTIONIST_PORT=${RECEPTIONIST_PORT}
+      - IMAGE_PORT=${IMAGE_PORT}
+    ports:
+      - "${EXECUTIVE_PORT}:${EXECUTIVE_PORT}"
+    networks:
+      - mynetwork
+
+  client_manager:
+    build:
+      context: ./client_expressjs/
+      dockerfile: Dockerfile.manager
+    environment:
+      - SERVER_URL=http://server_flask
+      - AUTH_PORT=${AUTH_PORT}
+      - DATA_PORT=${DATA_PORT}
+      - EXECUTIVE_PORT=${EXECUTIVE_PORT}
+      - MANAGER_PORT=${MANAGER_PORT}
+      - RECEPTIONIST_PORT=${RECEPTIONIST_PORT}
+      - IMAGE_PORT=${IMAGE_PORT}
+    ports:
+      - "${MANAGER_PORT}:${MANAGER_PORT}"
+    networks:
+      - mynetwork
+
+  client_receptionist:
+    build:
+      context: ./client_expressjs/
+      dockerfile: Dockerfile.receptionist
+    environment:
+      - SERVER_URL=http://server_flask
+      - AUTH_PORT=${AUTH_PORT}
+      - DATA_PORT=${DATA_PORT}
+      - EXECUTIVE_PORT=${EXECUTIVE_PORT}
+      - MANAGER_PORT=${MANAGER_PORT}
+      - RECEPTIONIST_PORT=${RECEPTIONIST_PORT}
+      - IMAGE_PORT=${IMAGE_PORT}
+    ports:
+      - "${RECEPTIONIST_PORT}:${RECEPTIONIST_PORT}"
+    networks:
+      - mynetwork
+
+  server_flask:
+    build:
+      context: ./server_flask
+      dockerfile: Dockerfile.server
+    restart: always
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DB=${MYSQL_DB}
+      - DATA_PORT=${DATA_PORT}
+    ports:
+      - "${IMAGE_PORT}:${DATA_PORT}"
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+  # Dịch vụ MySQL
+  db:
+    image: mysql
+    environment:
+      # MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: ${MYSQL_DB}
+      # MYSQL_USER: root
+      # MYSQL_PASSWORD: 
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - mynetwork
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      # Uncomment and set the following if you're using a different user/password for phpMyAdmin
+      # PMA_USER: phpmyadmin
+      # PMA_PASSWORD: your_phpmyadmin_password
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+volumes:
+  db_data:
+
+
+networks:
+  mynetwork:
+    driver: bridge

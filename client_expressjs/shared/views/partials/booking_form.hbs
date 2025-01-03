@@ -1,0 +1,61 @@
+{{#with booking}}
+<div class="form-floating mb-3">
+    <input type="text" name="room_id" class="form-control" value="{{this.room_id}}" hidden>
+    <input type="text" name="price" id="price" class="form-control" value="{{this.PricePerNight}}" hidden>
+    <input type="text" class="form-control" id="floatingInput" value="{{this.RoomNumber}}" disabled>
+    <label for="floatingInput">Room Number</label>
+</div>
+<div class="input-group mb-3">
+    <span class="input-group-text">Checkin</span>
+    <input type="date" class="form-control" id="check_in" name="check_in" value="{{this.CheckInDate}}" {{disabled}}>
+    <span class="input-group-text">Checkout</span>
+    <input type="date" class="form-control" id="check_out" name="check_out" value="{{this.CheckOutDate}}" {{disabled}}>
+</div>
+<div class="card mb-3">
+    <div class="d-flex align-items-center justify-content-between m-2">
+        <h5 class="mb-0">Customers:</h5>
+    </div>
+    <table class="table table-bordered table-hover p-3">
+        <tr>
+            <th width="170px">Citizen ID</th>
+            <th>Fullname</th>
+        </tr>
+        {{#each this.Customers}}
+        <tr>
+            <td><input type="text" name="citizenid[]" class="form-control" id="citizenid" value="{{this.CitizenId}}"
+                    {{../booking.disabled}}></td>
+            <td><input type="text" name="fullname[]" class="form-control" id="fullname" value="{{this.Fullname}}"
+                    {{../booking.disabled}}></td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Total</span>
+    <input type="text" class="form-control w-25" aria-label="Price" name="total" id="total"
+        aria-describedby="basic-addon1" value="{{this.Total}}" {{disabled}}>
+    <span class="input-group-text" id="basic-addon1">Status</span>
+    <select name="status" class="form-select" id="">
+        {{#if this.Status}}
+        <option value="{{this.Status}}" class="select-label" selected>{{this.Status}}</option>
+        {{else}}
+        <option value="" class="select-label" selected>Status</option>
+        {{/if}}
+        <hr>
+        {{#each @status_list}}
+        <option value="{{this}}" class="select-label">{{this}}</option>
+        {{/each}}
+    </select>
+</div>
+{{/with}}
+{{#if message}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+{{#if error}}
+    <div class="alert alert-danger" role="alert">
+        {{error}}
+    </div>
+{{/if}}

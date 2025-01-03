@@ -1,0 +1,48 @@
+{{> spinner}}
+
+{{> sidebar}}
+
+<!-- Content Start -->
+<div class="content">
+    {{> navbar}}
+
+    <!-- Recent Sales Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            {{#each category}}
+            <div class="col-sm-12 col-md-6 col-xl-4">
+                <form class="card rounded p-4" method="post">
+                    <div class="form-floating mb-3">
+                        <input type="hidden" name="category_id" value="{{this.id}}">
+                        <input type="email" class="form-control" id="floatingInput" value="{{this.Name}}" disabled>
+                        <label for="floatingInput">Catgory Name</label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Number of guest</span>
+                        <input type="text" class="form-control" value="{{this.NumberOfGuests}}" aria-label="{{this.NumberOfGuests}}" aria-describedby="basic-addon2" disabled>
+                    </div>
+                    <div class="card mb-3">
+                        <label class="mx-3">Amenities</label>
+                        <ul>
+                            {{#each this.Amenities}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    {{#if error}} {{{error}}} {{/if}}
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">Price</span>
+                        <input type="text" name="price" class="form-control" value="{{this.PricePerNight}}" aria-label="{{this.PricePerNight}}" aria-describedby="basic-addon2">
+                        <button class="input-group-text btn btn-outline-primary" id="basic-addon2">Update</button>
+                    </div>
+                </form>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <!-- Recent Sales End -->
+    {{> footer}}
+</div>
+<!-- Content End -->
+
+{{> backToTop}}

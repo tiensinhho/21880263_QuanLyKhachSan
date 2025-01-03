@@ -1,0 +1,297 @@
+.
+├── README.md
+├── client_expressjs
+│   ├── Dockerfile.auth
+│   ├── Dockerfile.executive
+│   ├── Dockerfile.manager
+│   ├── Dockerfile.receptionist
+│   ├── client_auth
+│   │   ├── app.js
+│   │   ├── bin
+│   │   │   └── www
+│   │   ├── controllers
+│   │   │   └── user_controller.js
+│   │   ├── package.json
+│   │   ├── pnpm-lock.yaml
+│   │   └── routes
+│   │       └── index.js
+│   ├── client_executive
+│   │   ├── app.js
+│   │   ├── bin
+│   │   │   └── www
+│   │   ├── controllers
+│   │   │   └── executive_controller.js
+│   │   ├── package.json
+│   │   ├── pnpm-lock.yaml
+│   │   └── routes
+│   │       └── index.js
+│   ├── client_manager
+│   │   ├── app.js
+│   │   ├── bin
+│   │   │   └── www
+│   │   ├── controllers
+│   │   │   └── manager_controller.js
+│   │   ├── package.json
+│   │   ├── pnpm-lock.yaml
+│   │   └── routes
+│   │       └── index.js
+│   ├── client_receptionist
+│   │   ├── app.js
+│   │   ├── bin
+│   │   │   └── www
+│   │   ├── controllers
+│   │   │   └── receptionist_controller.js
+│   │   ├── package.json
+│   │   ├── pnpm-lock.yaml
+│   │   └── routes
+│   │       └── index.js
+│   └── shared
+│       ├── config.js
+│       ├── models
+│       │   └── user_model.js
+│       ├── package.json
+│       ├── pnpm-lock.yaml
+│       ├── public
+│       │   ├── images
+│       │   │   ├── favicon.png
+│       │   │   ├── room-1.jpg
+│       │   │   ├── testimonial-1.jpg
+│       │   │   ├── testimonial-2.jpg
+│       │   │   └── user.jpg
+│       │   ├── javascripts
+│       │   │   ├── bootstrap.bundle.min.js
+│       │   │   ├── chart.js
+│       │   │   ├── first.js
+│       │   │   ├── main.js
+│       │   │   └── pargination.js
+│       │   ├── lib
+│       │   │   ├── chart
+│       │   │   │   └── chart.min.js
+│       │   │   ├── easing
+│       │   │   │   ├── easing.js
+│       │   │   │   └── easing.min.js
+│       │   │   ├── owlcarousel
+│       │   │   │   ├── LICENSE
+│       │   │   │   ├── assets
+│       │   │   │   │   ├── ajax-loader.gif
+│       │   │   │   │   ├── owl.carousel.css
+│       │   │   │   │   ├── owl.carousel.min.css
+│       │   │   │   │   ├── owl.theme.default.css
+│       │   │   │   │   ├── owl.theme.default.min.css
+│       │   │   │   │   ├── owl.theme.green.css
+│       │   │   │   │   ├── owl.theme.green.min.css
+│       │   │   │   │   └── owl.video.play.png
+│       │   │   │   ├── owl.carousel.js
+│       │   │   │   └── owl.carousel.min.js
+│       │   │   ├── tempusdominus
+│       │   │   │   ├── css
+│       │   │   │   │   ├── tempusdominus-bootstrap-4.css
+│       │   │   │   │   └── tempusdominus-bootstrap-4.min.css
+│       │   │   │   └── js
+│       │   │   │       ├── moment-timezone.min.js
+│       │   │   │       ├── moment.min.js
+│       │   │   │       ├── tempusdominus-bootstrap-4.js
+│       │   │   │       └── tempusdominus-bootstrap-4.min.js
+│       │   │   └── waypoints
+│       │   │       ├── links.php
+│       │   │       └── waypoints.min.js
+│       │   ├── scss
+│       │   │   ├── bootstrap
+│       │   │   │   └── scss
+│       │   │   │       ├── _accordion.scss
+│       │   │   │       ├── _alert.scss
+│       │   │   │       ├── _badge.scss
+│       │   │   │       ├── _breadcrumb.scss
+│       │   │   │       ├── _button-group.scss
+│       │   │   │       ├── _buttons.scss
+│       │   │   │       ├── _card.scss
+│       │   │   │       ├── _carousel.scss
+│       │   │   │       ├── _close.scss
+│       │   │   │       ├── _containers.scss
+│       │   │   │       ├── _dropdown.scss
+│       │   │   │       ├── _forms.scss
+│       │   │   │       ├── _functions.scss
+│       │   │   │       ├── _grid.scss
+│       │   │   │       ├── _helpers.scss
+│       │   │   │       ├── _images.scss
+│       │   │   │       ├── _list-group.scss
+│       │   │   │       ├── _mixins.scss
+│       │   │   │       ├── _modal.scss
+│       │   │   │       ├── _nav.scss
+│       │   │   │       ├── _navbar.scss
+│       │   │   │       ├── _offcanvas.scss
+│       │   │   │       ├── _pagination.scss
+│       │   │   │       ├── _popover.scss
+│       │   │   │       ├── _progress.scss
+│       │   │   │       ├── _reboot.scss
+│       │   │   │       ├── _root.scss
+│       │   │   │       ├── _spinners.scss
+│       │   │   │       ├── _tables.scss
+│       │   │   │       ├── _toasts.scss
+│       │   │   │       ├── _tooltip.scss
+│       │   │   │       ├── _transitions.scss
+│       │   │   │       ├── _type.scss
+│       │   │   │       ├── _utilities.scss
+│       │   │   │       ├── _variables.scss
+│       │   │   │       ├── bootstrap-grid.scss
+│       │   │   │       ├── bootstrap-reboot.scss
+│       │   │   │       ├── bootstrap-utilities.scss
+│       │   │   │       ├── bootstrap.scss
+│       │   │   │       ├── forms
+│       │   │   │       │   ├── _floating-labels.scss
+│       │   │   │       │   ├── _form-check.scss
+│       │   │   │       │   ├── _form-control.scss
+│       │   │   │       │   ├── _form-range.scss
+│       │   │   │       │   ├── _form-select.scss
+│       │   │   │       │   ├── _form-text.scss
+│       │   │   │       │   ├── _input-group.scss
+│       │   │   │       │   ├── _labels.scss
+│       │   │   │       │   └── _validation.scss
+│       │   │   │       ├── helpers
+│       │   │   │       │   ├── _clearfix.scss
+│       │   │   │       │   ├── _colored-links.scss
+│       │   │   │       │   ├── _position.scss
+│       │   │   │       │   ├── _ratio.scss
+│       │   │   │       │   ├── _stretched-link.scss
+│       │   │   │       │   ├── _text-truncation.scss
+│       │   │   │       │   └── _visually-hidden.scss
+│       │   │   │       ├── mixins
+│       │   │   │       │   ├── _alert.scss
+│       │   │   │       │   ├── _border-radius.scss
+│       │   │   │       │   ├── _box-shadow.scss
+│       │   │   │       │   ├── _breakpoints.scss
+│       │   │   │       │   ├── _buttons.scss
+│       │   │   │       │   ├── _caret.scss
+│       │   │   │       │   ├── _clearfix.scss
+│       │   │   │       │   ├── _color-scheme.scss
+│       │   │   │       │   ├── _container.scss
+│       │   │   │       │   ├── _deprecate.scss
+│       │   │   │       │   ├── _forms.scss
+│       │   │   │       │   ├── _gradients.scss
+│       │   │   │       │   ├── _grid.scss
+│       │   │   │       │   ├── _image.scss
+│       │   │   │       │   ├── _list-group.scss
+│       │   │   │       │   ├── _lists.scss
+│       │   │   │       │   ├── _pagination.scss
+│       │   │   │       │   ├── _reset-text.scss
+│       │   │   │       │   ├── _resize.scss
+│       │   │   │       │   ├── _table-variants.scss
+│       │   │   │       │   ├── _text-truncate.scss
+│       │   │   │       │   ├── _transition.scss
+│       │   │   │       │   ├── _utilities.scss
+│       │   │   │       │   └── _visually-hidden.scss
+│       │   │   │       ├── utilities
+│       │   │   │       │   └── _api.scss
+│       │   │   │       └── vendor
+│       │   │   │           └── _rfs.scss
+│       │   │   └── bootstrap.scss
+│       │   └── stylesheets
+│       │       ├── bootstrap.min.css
+│       │       └── style.css
+│       ├── services
+│       │   ├── booking_service.js
+│       │   ├── middleware.js
+│       │   ├── report_service.js
+│       │   ├── room_service.js
+│       │   └── user_service.js
+│       ├── utils
+│       │   ├── fetch_data.js
+│       │   └── helpers.js
+│       └── views
+│           ├── LICENSE.txt
+│           ├── READ-ME.txt
+│           ├── account.hbs
+│           ├── booking_detail.hbs
+│           ├── booking_new.hbs
+│           ├── bookings.hbs
+│           ├── error.hbs
+│           ├── index.hbs
+│           ├── layout.hbs
+│           ├── partials
+│           │   ├── backToTop.hbs
+│           │   ├── booking_form.hbs
+│           │   ├── footer.hbs
+│           │   ├── navbar.hbs
+│           │   ├── navbar_annual_report.hbs
+│           │   ├── navbar_bookings.hbs
+│           │   ├── navbar_category.hbs
+│           │   ├── navbar_monthly_report.hbs
+│           │   ├── navbar_rooms.hbs
+│           │   ├── sidebar.hbs
+│           │   ├── sidebar_executive.hbs
+│           │   ├── sidebar_manager.hbs
+│           │   ├── sidebar_receptionist.hbs
+│           │   └── spinner.hbs
+│           ├── report_annual.hbs
+│           ├── report_monthly.hbs
+│           ├── room_category.hbs
+│           ├── rooms.hbs
+│           ├── signin.hbs
+│           └── signup.hbs
+├── docker-compose.yml
+├── server_flask
+│   ├── Dockerfile.server
+│   ├── app.py
+│   ├── config.py
+│   ├── controllers
+│   │   ├── error_controller.py
+│   │   ├── executive_controller.py
+│   │   ├── hotel_controller.py
+│   │   ├── image_controller.py
+│   │   ├── manager_controller.py
+│   │   ├── receptionist_controller.py
+│   │   └── user_controller.py
+│   ├── db.sql
+│   ├── models
+│   │   ├── booking_model.py
+│   │   ├── database.py
+│   │   ├── hotel_model.py
+│   │   ├── report_model.py
+│   │   ├── room_model.py
+│   │   └── user_model.py
+│   ├── public
+│   │   ├── css
+│   │   └── images
+│   │       ├── room-1.jpg
+│   │       ├── room-10.jpg
+│   │       ├── room-11.jpg
+│   │       ├── room-12.jpg
+│   │       ├── room-13.jpg
+│   │       ├── room-14.jpg
+│   │       ├── room-15.jpg
+│   │       ├── room-16.jpg
+│   │       ├── room-17.jpg
+│   │       ├── room-18.jpg
+│   │       ├── room-19.jpg
+│   │       ├── room-2.jpg
+│   │       ├── room-20.jpg
+│   │       ├── room-21.jpg
+│   │       ├── room-22.jpg
+│   │       ├── room-23.jpg
+│   │       ├── room-24.jpg
+│   │       ├── room-25.jpg
+│   │       ├── room-26.jpg
+│   │       ├── room-27.jpg
+│   │       ├── room-28.jpg
+│   │       ├── room-29.jpg
+│   │       ├── room-3.jpg
+│   │       ├── room-30.jpg
+│   │       ├── room-4.jpg
+│   │       ├── room-5.jpg
+│   │       ├── room-6.jpg
+│   │       ├── room-7.jpg
+│   │       ├── room-8.jpg
+│   │       ├── room-9.jpg
+│   │       ├── user-1.jpg
+│   │       ├── user-2.jpg
+│   │       └── user-3.jpg
+│   ├── requirements.txt
+│   └── services
+│       ├── booking_service.py
+│       ├── hotel_service.py
+│       ├── report_service.py
+│       ├── room_service.py
+│       └── user_service.py
+└── structure.txt
+
+52 directories, 243 files

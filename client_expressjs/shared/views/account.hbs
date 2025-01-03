@@ -1,0 +1,43 @@
+{{> spinner}}
+
+{{> sidebar}}
+
+<!-- Content Start -->
+<div class="content">
+    {{> navbar}}
+    <!-- Sign Up Start -->
+    <div class="container-fluid">
+        <div class="row h-100 align-items-center justify-content-center">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6">
+                <div class="bg-body-tertiary rounded p-4 p-sm-5 my-4 mx-3">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <a href="/" class="text-decoration-none">
+                            <h3 class="text-primary">PROFILE</h3>
+                        </a>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingText" value="{{@user.Fullname}}" readonly>
+                        <label for="floatingText">Fullname</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" value="{{@user.Email}}" readonly>
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    {{#if user.Areas}}
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">Areas</span>
+                        {{#each user.Areas}}
+                        <input type="text" class="input-sm form-control d-flex text-center" value="{{this.Name}}"/>
+                        {{/each}}
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sign Up End -->
+    {{> footer}}
+</div>
+<!-- Content End -->
+
+{{> backToTop}}

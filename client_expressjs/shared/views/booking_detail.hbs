@@ -1,0 +1,31 @@
+{{> spinner}}
+
+{{> sidebar}}
+
+<!-- Content Start -->
+<div class="content">
+    {{> navbar}}
+
+    <!-- Recent Sales Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-12 col-md-8 col-xl-8 m-auto">
+                <form class="card rounded p-4" method="post">
+                    {{> booking_form}}
+                    {{#if user.isReceptionist}}
+                    {{#if booking}}
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" name="_method" value="Put" class="btn btn-info px-3 w-25">Update</button>
+                    </div>
+                    {{/if}}
+                    {{/if}}
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Recent Sales End -->
+    {{> footer}}
+</div>
+<!-- Content End -->
+
+{{> backToTop}}

@@ -1,0 +1,23 @@
+<div class="card rounded d-flex flex-md-row flex-sm-column w-100 justify-content-center me-1">
+    <div class="p-1 col-lg-2 col-md-2">
+        <input class="form-control" type="search" placeholder="Customer" name="customer_name" value="{{customer_name}}">
+    </div>
+    <div class="p-1 col-lg-2 col-md-2">
+        <select name="category" id="" class="form-control form-select" value="{{category}}">
+            {{#if category}}
+            <option value="{{category}}" selected>{{category}}</option>
+            {{else}}
+            <option value="">Category</option>
+            {{/if}}
+            {{#each categories}}
+            <option value="{{this.Name}}">{{this.Name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div class="input-group p-1">
+        <input type="date" class="input-sm form-control" name="date" value="{{date}}"/>
+    </div>
+    <div class="p-1">
+        <input class="btn btn-outline-primary" type="submit" value="Search">
+    </div>
+</div>
